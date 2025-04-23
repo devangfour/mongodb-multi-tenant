@@ -8,9 +8,9 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table.string('name').notNullable()
-      table.integer('storage_limit_gb').notNullable()
-      table.boolean('dedicated_cpu').defaultTo(false)
-      table.decimal('price', 10, 2)
+      table.string('description').nullable()
+      table.integer('db_limit').unsigned().notNullable()
+      table.decimal('price', 10, 2).notNullable()
       table.timestamps(true)
     })
   }

@@ -41,3 +41,12 @@ export const middleware = router.named({
   adminOnly: () => import('#middleware/admin_only_middleware'),
   clientOnly: () => import('#middleware/client_only_middleware')
 })
+
+/**
+ * Define middleware groups
+ */
+export const middlewareGroups = {
+  auth: ['auth'],
+  admin: ['auth', 'adminOnly'],
+  client: ['auth', 'clientOnly']
+}

@@ -3,7 +3,11 @@ import type { NextFn } from '@adonisjs/core/types/http'
 
 export default class ClientOnlyMiddleware {
   async handle({ auth, response }: HttpContext, next: NextFn) {
-    if (auth.user?.role !== 'admin') {
+    if (auth.user?.role === 'admin') {
+      return response.redirect().toPath('/admin/dashboard');
+    }
+    
+    if (auth.user?.role !== 'client') {
       return response.unauthorized('Access denied')
     }
 

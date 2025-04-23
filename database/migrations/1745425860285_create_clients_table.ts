@@ -10,6 +10,9 @@ export default class extends BaseSchema {
       table.string('name').notNullable()
       table.string('email').unique().notNullable()
       table.string('password').notNullable()
+      table.string('db_name').unique().notNullable()
+      table.string('fly_app_name').nullable()
+      table.enum('status', ['running', 'stopped']).defaultTo('stopped')
       table.integer('plan_id').unsigned().references('id').inTable('plans').onDelete('SET NULL')
 
       table.timestamp('created_at')
